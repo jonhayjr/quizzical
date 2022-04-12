@@ -18,9 +18,12 @@ body {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
     height: 100vh;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
 }
 
 .btn {
@@ -48,9 +51,10 @@ body {
     width: 297px;
     border-radius:100%;
     background-color: #FFFAD1;
-    top: -50px;
-    right: -100px;
+    top: -100px;
+    right: -200px;
     transform: rotate(-128.49deg);
+    z-index: -1;
   }
 
   .container:after {
@@ -60,15 +64,20 @@ body {
     width: 297px;
     border-radius:100%;
     background-color: #DEEBF8;
-    bottom: -50px;
-    left: -100px;
+    bottom: -100px;
+    left: -200px;
     transform: rotate(-128.49deg);
+    z-index: -2;
   }
 
   /*Start Game Overlay*/
   .overlay {
     text-align: center;
     color: #293264;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
   }
 
   .title {
@@ -83,4 +92,54 @@ body {
 
   .btn__start {
       padding: 1em 2em;
+  }
+
+  /*Trivia Card*/
+  .trivia-container {
+    margin-top: 2.5em;
+  }
+
+  .trivia-card {
+      color: #293264;
+      width: 75%;
+      margin-right: auto;
+      margin-left: auto;
+  }
+
+  .trivia-card + .trivia-card {
+      margin-top: 2em;
+  }
+  
+  .question {
+      font-weight: 700;
+      margin-bottom: 0.75em;
+  }
+
+  .answers {
+    display: flex;
+  }
+
+  .answer {
+      display: inline-block;
+      text-align: center;
+      font-size: 0.63rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      border: 1px solid #293264;
+      border-radius: 15px;
+      padding: 0.25rem 1rem;
+  }
+
+  .answer:hover {
+      cursor: pointer;
+  }
+
+  .answer + .answer {
+      margin-left: 1em;
+  }
+
+  hr {
+      margin-top: 1.5em;
+      margin-right: auto;
+      margin-left: auto;
   }
