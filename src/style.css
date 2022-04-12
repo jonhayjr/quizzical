@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;700&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Karla', sans-serif;
+    background-color: #F5F7FB;
+    position: relative;
+}
+
+/*Background corner effect*/
+.container:before {
+    content: '';
+    position: fixed;
+    height: 235px;
+    width: 297px;
+    border-radius:100%;
+    background-color: #FFFAD1;
+    top: -50px;
+    right: -100px;
+    transform: rotate(-128.49deg);
+  }
+
+  .container:after {
+    content: '';
+    position: fixed;
+    height: 235px;
+    width: 297px;
+    border-radius:100%;
+    background-color: #DEEBF8;
+    bottom: -50px;
+    left: -100px;
+    transform: rotate(-128.49deg);
+  }
