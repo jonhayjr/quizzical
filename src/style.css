@@ -34,6 +34,7 @@ ul {
     color: #fff;
     border-radius: 15px;
     font-family: 'Inter', sans-serif;
+    padding: 1em 2em;
 }
 
 .btn:hover,
@@ -41,6 +42,16 @@ ul {
     color: #4D5B9E;
     background-color: #fff;
     border-color: #4D5B9E;
+}
+
+/*Layout*/
+.loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    font-size: 3.5rem;
+    color: #293264;
 }
 
 /*Background corner effect*/
@@ -90,10 +101,6 @@ ul {
       margin-bottom: 1.81em;
   }
 
-  .btn__start {
-      padding: 1em 2em;
-  }
-
   /*Trivia Card*/
   .trivia-container {
     margin-top: 2.5em;
@@ -101,7 +108,7 @@ ul {
 
   .trivia-card {
       color: #293264;
-      width: 75%;
+      width: 90%;
       margin-right: auto;
       margin-left: auto;
   }
@@ -117,10 +124,14 @@ ul {
 
   .answers {
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 
   .answer {
       display: inline-block;
+      width: 100%;
       text-align: center;
       font-size: 0.63rem;
       font-weight: 500;
@@ -128,22 +139,84 @@ ul {
       border: 1px solid #293264;
       border-radius: 15px;
       padding: 0.25rem 1rem;
+      color: #293264;
   }
 
   .answer:hover {
       cursor: pointer;
   }
 
+  .answer + .answer {
+      margin-top: 1em;
+  }
+
   .selected {
       background-color: #D6DBF5;
   }
 
-  .answer + .answer {
-      margin-left: 1em;
+  .correct {
+      background-color: #94D7A2;
+  }
+
+  .wrong {
+      background-color: #F8BCBC;
+  }
+
+  .other {
+      opacity: 0.5;
   }
 
   hr {
       margin-top: 1.5em;
       margin-right: auto;
       margin-left: auto;
+  }
+
+  /*Score Section*/
+  .score-section {
+      width: 75%;
+      margin-right: auto;
+      margin-left: auto;
+      margin-top: 1em;  
+      display: flex;
+      align-items: center;
+  }
+
+  .score {
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 0.81rem;
+      color: #293264;
+      text-align: center;
+      margin-right: 1em;
+  }
+
+  .btn_chk-answer {
+      margin-left: auto;
+  }
+
+  @media screen and (min-width: 550px){
+    .trivia-card {
+        width: 75%;
+    }
+
+    .trivia-container,
+    .score-section {
+        max-width: 800px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+
+    .answers {
+        flex-direction: row;
+    }
+
+    .answer + .answer {
+        margin-left: 1em;
+        margin-top: 0;
+    }
+
+    .score {
+        width: 60%;
+    }
   }

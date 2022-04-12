@@ -4,18 +4,19 @@ import './style.css';
 /*Import Components*/  
 import StartOverlay from './components/StartOverlay';
 import TriviaCard from './components/TriviaCard';
-import { attributesToProps } from 'html-react-parser';
 
 const App = () => {
-  const [isStarted, setIsStarted] = useState(false); /*Should initialize as false*/
+  const [isStarted, setIsStarted] = useState(true); /*Should initialize as false*/
   const [triviaData, setTriviaData] = useState([]);
+  const [answersChecked, setAnswersChecked] = useState(false);
+  const [scoreMessage, setScoreMessage] = useState('');
 
   useEffect(() => {
     getTriviaData()
   }, [])
 
 
-  /*Function to goggle isStarted state which shows or hides start overlay*/
+  /*Function to get isStarted state which shows or hides start overlay*/
   const toggleStartGame = () => {
     setIsStarted(prev => !prev);
   }
@@ -39,15 +40,63 @@ const App = () => {
     })
   }
 
+  /*Function to check score*/ 
+  const getScore = () => {
+    let correctAnswers = 0;
+
+    triviaData.forEach(item => {
+      if (item.selectedAnswer === item.correct_answer) {
+        correctAnswers ++;
+      }
+    })
+    const message = `You scored ${correctAnswers}/${triviaData.length} correct answers.`
+    setScoreMessage(message)
+  }
+
+  /*Function to check answers*/
+  const runCheckAnswers = () => {
+    /*If answers aren't checked, get score and then update*/
+    if (!answersChecked) {
+        getScore();
+        setAnswersChecked(true);
+    } else {
+      resetGame();
+    }
+  }
+  
+  const resetGame = () => {
+
+    /*Set answers checked to false and score message to blank*/
+    setAnswersChecked(false);
+    setScoreMessage('');
+
+    /*Reset trivia data*/
+    setTriviaData([])
+
+    /*Get new trivia data*/
+    getTriviaData();
+  }
 
   return (
     <div className="container">
-      {!isStarted && <StartOverlay toggleStartGame={toggleStartGame}/>}
-      {isStarted && <div className="trivia-container">
-          {triviaData && triviaData.map((item, index) => (
-              <TriviaCard key={index} index={index} data={item} getSelectedAnswer={getSelectedAnswer}/>
-          ))}
-        </div>}
+      {!isStarted ?
+       <StartOverlay toggleStartGame={toggleStartGame}/>
+       : 
+       triviaData.length === 0 || !triviaData
+       ? <p className="loading">Loading...</p>
+       :
+       <>
+        <div className="trivia-container">
+            {triviaData && triviaData.map((item, index) => (
+                <TriviaCard key={index} index={index} data={item} getSelectedAnswer={getSelectedAnswer} answersChecked={answersChecked}/>
+            ))}
+          </div>
+          <div className="score-section">
+            { answersChecked && <p className="score">{scoreMessage}</p>}
+            <button className="btn btn_chk-answer" onClick={runCheckAnswers}>{!answersChecked ? 'Check answers' : 'Play again'}</button>
+          </div>
+        </>
+      }
     </div>
   )
 }
