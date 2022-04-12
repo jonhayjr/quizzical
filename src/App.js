@@ -6,7 +6,7 @@ import StartOverlay from './components/StartOverlay';
 import TriviaCard from './components/TriviaCard';
 
 const App = () => {
-  const [isStarted, setIsStarted] = useState(true); /*Should initialize as false*/
+  const [isStarted, setIsStarted] = useState(false); /*Should initialize as false*/
   const [triviaData, setTriviaData] = useState([]);
   const [answersChecked, setAnswersChecked] = useState(false);
   const [scoreMessage, setScoreMessage] = useState('');
