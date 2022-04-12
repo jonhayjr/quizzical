@@ -134,6 +134,10 @@ ul {
       cursor: pointer;
   }
 
+  .selected {
+      background-color: #D6DBF5;
+  }
+
   .answer + .answer {
       margin-left: 1em;
   }
