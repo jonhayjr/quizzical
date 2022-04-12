@@ -104,11 +104,14 @@ ul {
   /*Trivia Card*/
   .trivia-container {
     margin-top: 2.5em;
+    max-width: 550px;
+    width: 85%;
+    margin-right: auto;
+    margin-left: auto;
   }
 
   .trivia-card {
       color: #293264;
-      width: 90%;
       margin-right: auto;
       margin-left: auto;
   }
@@ -124,21 +127,21 @@ ul {
 
   .answers {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
   }
 
   .answer {
-      display: inline-block;
-      width: 100%;
+      display: block;
       text-align: center;
       font-size: 0.63rem;
       font-weight: 500;
       font-family: 'Inter', sans-serif;
       border: 1px solid #293264;
       border-radius: 15px;
-      padding: 0.25rem 1rem;
+      padding: 1rem 2rem;
       color: #293264;
   }
 
@@ -167,17 +170,18 @@ ul {
   }
 
   hr {
-      margin-top: 1.5em;
+      margin-top: 1em;
       margin-right: auto;
       margin-left: auto;
   }
 
   /*Score Section*/
   .score-section {
-      width: 75%;
+      width: 85%;
+      max-width: 450px;
       margin-right: auto;
       margin-left: auto;
-      margin-top: 1em;  
+      margin-top: 1.69em;  
       display: flex;
       align-items: center;
   }
@@ -197,18 +201,16 @@ ul {
 
   @media screen and (min-width: 550px){
     .trivia-card {
-        width: 75%;
-    }
-
-    .trivia-container,
-    .score-section {
-        max-width: 800px;
-        margin-right: auto;
-        margin-left: auto;
+        width: 90%;
     }
 
     .answers {
         flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .answer {
+        padding: 0.5rem 1.5rem;
     }
 
     .answer + .answer {
