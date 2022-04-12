@@ -24,12 +24,20 @@ body {
 }
 
 .btn {
+    cursor: pointer;
     outline: none;
-    border: none;
+    border: 3px solid transparent;
     background-color: #4D5B9E;
     color: #fff;
     border-radius: 15px;
     font-family: 'Inter', sans-serif;
+}
+
+.btn:hover,
+.btn:focus {
+    color: #4D5B9E;
+    background-color: #fff;
+    border-color: #4D5B9E;
 }
 
 /*Background corner effect*/
