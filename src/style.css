@@ -1,14 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Karla:wght@300;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap');
 
+/*General Styles*/
 * {
     box-sizing: border-box;
+}
+
+h1, p {
+    margin: 0;
 }
 
 body {
     margin: 0;
     font-family: 'Karla', sans-serif;
+    font-size: 1rem;
     background-color: #F5F7FB;
     position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.btn {
+    outline: none;
+    border: none;
+    background-color: #4D5B9E;
+    color: #fff;
+    border-radius: 15px;
+    font-family: 'Inter', sans-serif;
 }
 
 /*Background corner effect*/
@@ -34,4 +55,24 @@ body {
     bottom: -50px;
     left: -100px;
     transform: rotate(-128.49deg);
+  }
+
+  /*Start Game Overlay*/
+  .overlay {
+    text-align: center;
+    color: #293264;
+  }
+
+  .title {
+      font-weight: 700;
+      font-size: 1.94rem;
+      margin-bottom: 0.44rem;
+  }
+
+  .subtitle {
+      margin-bottom: 1.81em;
+  }
+
+  .btn__start {
+      padding: 1em 2em;
   }
