@@ -26,6 +26,7 @@ ul {
     padding: 0;
 }
 
+
 .btn {
     cursor: pointer;
     outline: none;
@@ -83,6 +84,7 @@ ul {
 
   /*Start Game Overlay*/
   .overlay {
+    width: 100%;
     text-align: center;
     color: #293264;
     position: absolute;
@@ -99,6 +101,31 @@ ul {
 
   .subtitle {
       margin-bottom: 1.81em;
+  }
+
+  .input-group {
+      width: 75%;
+      margin-right: auto;
+      margin-left: auto;
+      margin-bottom: 1.81em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .label {
+      margin-bottom: 0.5em;
+  }
+
+  .input {
+      padding: 0.5em;
+      border: 1px solid #293264;
+  }
+
+  .input:focus {
+      outline: none;
+      border-color: rgb(190, 118, 190);
   }
 
   /*Trivia Card*/
@@ -181,6 +208,7 @@ ul {
       max-width: 450px;
       margin-right: auto;
       margin-left: auto;
+      margin-bottom: 1em;
       margin-top: 1.69em;  
       display: flex;
       align-items: center;

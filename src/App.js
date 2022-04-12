@@ -10,20 +10,21 @@ const App = () => {
   const [triviaData, setTriviaData] = useState([]);
   const [answersChecked, setAnswersChecked] = useState(false);
   const [scoreMessage, setScoreMessage] = useState('');
+  const [numOfQuestions, setNumberOfQuestions] = useState();
 
   useEffect(() => {
-    getTriviaData()
-  }, [])
-
+    getTriviaData();
+  }, [numOfQuestions])
 
   /*Function to get isStarted state which shows or hides start overlay*/
-  const toggleStartGame = () => {
+  const startGame = (form) => {
+    setNumberOfQuestions(form.numOfQuestions)
     setIsStarted(prev => !prev);
   }
 
   /*Function to get trivia data*/
   const getTriviaData = () => {
-    fetch('https://opentdb.com/api.php?amount=5')
+    fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}`)
     .then(res => res.json())
     .then(data => {
       const newData = data.results.map(item => ({...item, selectedAnswer: ''}));
@@ -64,23 +65,22 @@ const App = () => {
     }
   }
   
+  /*Function to reset game*/
   const resetGame = () => {
 
     /*Set answers checked to false and score message to blank*/
     setAnswersChecked(false);
     setScoreMessage('');
+    setNumberOfQuestions();
 
-    /*Reset trivia data*/
-    setTriviaData([])
-
-    /*Get new trivia data*/
-    getTriviaData();
+    /*Set isStarted to false*/   
+    setIsStarted(false)
   }
 
   return (
     <div className="container">
       {!isStarted ?
-       <StartOverlay toggleStartGame={toggleStartGame}/>
+       <StartOverlay startGame={startGame}  />
        : 
        triviaData.length === 0 || !triviaData
        ? <p className="loading">Loading...</p>
