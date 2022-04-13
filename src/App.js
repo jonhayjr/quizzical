@@ -20,8 +20,6 @@ const App = () => {
 
   /*Function to get isStarted state which shows or hides start overlay*/
   const startGame = (form) => {
-    console.log(form)
-    console.log(form)
     setNumberOfQuestions(form.numOfQuestions)
     setDifficulty(form.difficulty || 'easy');
     setCategory(form.category || 'any')
@@ -78,6 +76,8 @@ const App = () => {
     setAnswersChecked(false);
     setScoreMessage('');
     setNumberOfQuestions();
+    setCategory();
+    setDifficulty();
 
     /*Set isStarted to false*/   
     setIsStarted(false)
