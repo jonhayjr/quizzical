@@ -107,25 +107,38 @@ ul {
       width: 75%;
       margin-right: auto;
       margin-left: auto;
-      margin-bottom: 1.81em;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
   }
 
+  .input-group + .input-group {
+      margin-top: 1em;
+  }
+
   .label {
       margin-bottom: 0.5em;
   }
 
-  .input {
+  .input,
+  .select {
+      min-width: 300px;
       padding: 0.5em;
       border: 1px solid #293264;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
   }
 
+ 
+  .select:focus, 
   .input:focus {
       outline: none;
       border-color: rgb(190, 118, 190);
+  }
+
+  .btn__start {
+    margin-top: 1.81em;
   }
 
   /*Trivia Card*/

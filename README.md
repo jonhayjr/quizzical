@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Quizzical
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a trivia that was built using React and is a project from Scrimba's Frontend Developer Career Path.  I added additional fields on start game screen that allows the user to enter the number of questions, difficulty, and category.
+
+Click [here](https://quizzical-jh.herokuapp.com/) for a preview.
 
 ## Available Scripts
 

@@ -1,6 +1,16 @@
+import React, {useState, useEffect} from 'react';
 import parse from "html-react-parser";
 
 const TriviaCard = (props) => {
+
+    //State to store random answers
+    const [randomAnswers, setRandomAnswers] = useState([])
+
+    //Randomize answers on page load
+    useEffect(() => {
+        setRandomAnswers([...props.data.incorrect_answers, props.data.correct_answer].sort(() => Math.random() - 0.5))
+    }, [])
+
 
     /*Function to update background based on selected answer*/
     const getClassNames = (answer) => {
@@ -30,7 +40,7 @@ const TriviaCard = (props) => {
             <p className="question">{props.data && parse(props.data.question)}</p>
             <ul className="answers">
                 {
-                    props.data && [...props.data.incorrect_answers, props.data.correct_answer].map((answer, index) => (
+                    props.data && randomAnswers.map((answer, index) => (
                         <li className={getClassNames(answer)}  key={index} onClick={() => {props.getSelectedAnswer(props.index, answer)}}>{parse(answer)}</li>
                 ))
                 }

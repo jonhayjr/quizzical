@@ -11,20 +11,26 @@ const App = () => {
   const [answersChecked, setAnswersChecked] = useState(false);
   const [scoreMessage, setScoreMessage] = useState('');
   const [numOfQuestions, setNumberOfQuestions] = useState();
+  const [difficulty, setDifficulty] = useState();
+  const [category, setCategory] = useState();
 
   useEffect(() => {
     getTriviaData();
-  }, [numOfQuestions])
+  }, [isStarted])
 
   /*Function to get isStarted state which shows or hides start overlay*/
   const startGame = (form) => {
+    console.log(form)
+    console.log(form)
     setNumberOfQuestions(form.numOfQuestions)
+    setDifficulty(form.difficulty || 'easy');
+    setCategory(form.category || 'any')
     setIsStarted(prev => !prev);
   }
 
   /*Function to get trivia data*/
   const getTriviaData = () => {
-    fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}`)
+    fetch(`https://opentdb.com/api.php?amount=${numOfQuestions}&difficulty=${difficulty}&category=${category}`)
     .then(res => res.json())
     .then(data => {
       const newData = data.results.map(item => ({...item, selectedAnswer: ''}));
